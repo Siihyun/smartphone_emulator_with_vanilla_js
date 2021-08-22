@@ -1,0 +1,37 @@
+{
+  "name": "smartphone_emulator_with_vanilla_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack --mode=production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Siihyun/smartphone_emulator_with_vanilla_js.git"
+  },
+  "keywords": [],
+  "author": "Sihyun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Siihyun/smartphone_emulator_with_vanilla_js/issues"
+  },
+  "homepage": "https://github.com/Siihyun/smartphone_emulator_with_vanilla_js#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "css-loader": "^6.2.0",
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.2",
+    "json-loader": "^0.5.7",
+    "mini-css-extract-plugin": "^2.2.0",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.0.0"
+  },
+  "dependencies": {
+    "file-loader": "^6.2.0",
+    "http-server": "^13.0.1"
+  }
+}
