@@ -1,5 +1,6 @@
 import './styles.css';
 import { getFormatedTime } from './src/utils/getCurrentTime';
+import App from './src/modules/app';
 
 const setTimeBar = () => {
   const timeBar = document.querySelector('.time-bar');
@@ -9,3 +10,5 @@ const setTimeBar = () => {
 };
 
 setTimeBar();
+
+const app = new App();
