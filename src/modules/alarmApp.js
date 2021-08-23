@@ -5,8 +5,9 @@ import '../styles/alarmApp.css';
 // sequence localstorage에 저장해놓기
 
 class AlarmApp {
-  constructor(rootNode) {
+  constructor(rootNode, setState) {
     this.target = rootNode;
+    this.setState = setState;
   }
 
   render = () => {

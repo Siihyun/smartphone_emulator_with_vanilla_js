@@ -6,21 +6,22 @@ import PhotoApp from './photoApp';
 class App {
   constructor() {
     this.rootNode = document.querySelector('#root');
-    this.mode = 'HOME';
+    this.state = {
+      mode: 'HOME',
+    };
     //history.pushState({}, '', '/home');
 
-    this.home = new Home(this.rootNode, this.onClick);
-    this.alarmApp = new AlarmApp(this.rootNode);
-    this.memoApp = new MemoApp(this.rootNode);
-    this.photoApp = new PhotoApp(this.rootNode);
+    this.home = new Home(this.rootNode, this.setState);
+    this.alarmApp = new AlarmApp(this.rootNode, this.setState);
+    this.memoApp = new MemoApp(this.rootNode, this.setState);
+    this.photoApp = new PhotoApp(this.rootNode, this.setState);
 
-    this.render(this.mode);
+    this.setState(this.state.mode);
   }
 
-  onClick = (e) => {
-    this.mode = e.target.dataset.key;
-    if (!this.mode) return;
-    this.render(this.mode);
+  setState = (mode) => {
+    this.state.mode = mode;
+    this.render(this.state.mode);
   };
 
   render = (mode) => {

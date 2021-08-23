@@ -5,12 +5,13 @@ import '../styles/memoApp.css';
 // sequence localstorage에 저장해놓기
 
 class MemoApp {
-  constructor(rootNode) {
+  constructor(rootNode, setState) {
     this.target = rootNode;
+    this.setState = setState;
   }
 
   render = () => {
-    this.target.innerHTML = `<span>I'm memo App</span>`;
+    this.target.innerHTML = `hi i'm memo app`;
   };
 }
 
