@@ -8,6 +8,7 @@ class AlarmApp {
     this.target = rootNode;
     this.setState = setState;
     this.alarmList = [];
+    this.alarmIntervalList = [];
   }
 
   addZero = (time) => {
@@ -15,7 +16,7 @@ class AlarmApp {
   };
 
   getAlarmTime = () => {
-    const hr = document.querySelector('.alarm-hors');
+    const hr = document.querySelector('.alarm-hours');
     const min = document.querySelector('.alarm-mins');
     const ap = document.querySelector('.am-pm');
 
@@ -32,20 +33,39 @@ class AlarmApp {
   };
 
   setAlarm = (alarmTime) => {
-    console.log('alarm set!');
-    setInterval(() => {
+    const alarm = setInterval(() => {
       console.log(alarmTime, getFormatedTime());
       if (alarmTime === getFormatedTime()) {
         console.log(alarmTime, getFormatedTime());
         alert(getFormatedTime());
+        this.deleteAlarm(alarmTime);
       }
     }, 1000);
+    this.alarmIntervalList.push({ time: alarmTime, interval: alarm });
+    console.log(this.alarmIntervalList);
+  };
+
+  deleteAlarm = (alarmTime) => {
+    this.alarmList = this.alarmList.filter((alarm) => alarm !== alarmTime);
+    const shouldDelete = this.alarmIntervalList.find(
+      (intervalItem) => intervalItem.time === alarmTime
+    ).interval;
+    clearTimeout(shouldDelete);
+    this.alarmIntervalList = this.alarmIntervalList.filter(
+      (intervalItem) => intervalItem.time !== alarmTime
+    );
+    this.update();
   };
 
   update = () => {
     const target = document.querySelector('.alarm-list');
     target.innerHTML = this.alarmList
-      .map((alarmTime) => `<li class="alarm-item">${alarmTime}</li><hr>`)
+      .map(
+        (alarmTime) => `<li class="alarm-item">
+      <span class="alarm-item-time">${alarmTime}</span>
+      <button class="alarm-delete" data-time=${alarmTime}>삭제</button>
+    </li><hr>`
+      )
       .join('');
   };
 
@@ -55,45 +75,46 @@ class AlarmApp {
       <button class="alarm-back-button">back</button>
       <button class="alarm-new-button">new</button>
     </nav>
-    <section class="alarm-set-wrapper invisible">
-    <div class="alarm-time">
-      <select class="am-pm">
-        <option value="AM">AM</option>
-        <option value="PM">PM</option>
-      </select>
+    <div class="alarm-set-wrapper invisible">
+      <div class="alarm-time">
+        <select class="am-pm">
+          <option value="AM">AM</option>
+          <option value="PM">PM</option>
+        </select>
+        <select class="alarm-hours">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
 
-      <select class="alarm-hors">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-      </select>
-
-      <select class="alarm-mins">
-        <option value="0">00</option>
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="30">30</option>
-        <option value="40">40</option>
-        <option value="50">50</option>
-      </select>
+        <select class="alarm-mins">
+          <option value="0">00</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="50">50</option>
+        </select>
+      </div>
+      <button class="alarm-save">저장</button>
     </div>
-    <button class="alarm-save">저장</button>
-  </section>
     <ul class="alarm-list">
     </ul>
-  </section>`;
+  </section>
+    `;
 
     const alarmWrapper = document.querySelector('.alarm-wrapper');
     const alarmSetWrapper = document.querySelector('.alarm-set-wrapper');
+
     alarmWrapper.addEventListener('click', (e) => {
       const targetClassList = e.target.classList;
       if (targetClassList.contains('alarm-save')) {
@@ -104,6 +125,9 @@ class AlarmApp {
         alarmSetWrapper.classList.add('invisible');
       } else if (targetClassList.contains('alarm-new-button')) {
         alarmSetWrapper.classList.remove('invisible');
+      } else if (targetClassList.contains('alarm-delete')) {
+        const alarmTime = e.target.dataset.time;
+        this.deleteAlarm(alarmTime);
       }
     });
   };
