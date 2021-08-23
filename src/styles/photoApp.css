@@ -1,3 +1,10 @@
+.photo-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
 .photo-list {
   display: flex;
   justify-content: space-between;
@@ -13,8 +20,24 @@
 .photo-item {
   width: 4rem;
   height: 4rem;
+  border-radius: 4px;
 }
 
 .photo-image {
   width: 100%;
+}
+
+.photo-image-viewer {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-image-item {
+  width: 100%;
+}
+
+.selected {
+  border: 2px solid #50bcdf;
 }

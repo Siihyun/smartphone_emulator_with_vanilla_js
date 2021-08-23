@@ -29,18 +29,24 @@ class PhotoApp {
       'file9',
       'file10',
     ];
+    this.viewerImg = '';
   }
 
   update = () => {
-    const target = document.querySelector('.photo-list');
-    target.innerHTML = this.photoList
+    const photoList = document.querySelector('.photo-list');
+    photoList.innerHTML = this.photoList
       .map(
         (photoFileName) =>
-          `<li class="photo-item"><img class="photo-image" src="dist/${photoFileName}.png" alt="user photo"></li>`
+          `<li class="photo-item"><img class="photo-image" data-id=${photoFileName} src="dist/${photoFileName}.png" alt="user photo"></li>`
       )
       .join('');
   };
 
+  updateViewer = () => {
+    const imageViewer = document.querySelector('.photo-image-viewer');
+    if (this.viewerImg !== '')
+      imageViewer.innerHTML = `<img class="photo-image-item"  src="dist/${this.viewerImg}.png" alt="user photo">`;
+  };
   render = () => {
     this.target.innerHTML = `<section class="photo-wrapper">
     <nav class="photo-nav-bar">
@@ -58,6 +64,13 @@ class PhotoApp {
       const targetClassList = e.target.classList;
       if (targetClassList.contains('photo-back-button')) {
         this.setState('HOME');
+      } else if (targetClassList.contains('photo-image')) {
+        const fileName = e.target.dataset.id;
+        const items = document.querySelectorAll('.photo-image');
+        items.forEach((item) => item.classList.remove('selected'));
+        targetClassList.add('selected');
+        this.viewerImg = fileName;
+        this.updateViewer();
       }
     });
 
