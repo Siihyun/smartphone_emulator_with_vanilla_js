@@ -1,23 +1,46 @@
+import Home from './home';
+import AlarmApp from './alarmApp';
+import MemoApp from './memoApp';
+import PhotoApp from './photoApp';
+
 class App {
   constructor() {
-    this.target = document.querySelector('#root');
+    this.rootNode = document.querySelector('#root');
     this.mode = 'HOME';
+    //history.pushState({}, '', '/home');
 
-    //this.home = new Home();
-    //this.alarmApp = new AlarmApp();
-    //this.memoApp = new MemoApp();
-    //this.photoApp = new PhotoApp();
+    this.home = new Home(this.rootNode, this.onClick);
+    this.alarmApp = new AlarmApp(this.rootNode);
+    this.memoApp = new MemoApp(this.rootNode);
+    this.photoApp = new PhotoApp(this.rootNode);
 
     this.render(this.mode);
   }
 
-  render(mode) {
+  onClick = (e) => {
+    this.mode = e.target.dataset.key;
+    if (!this.mode) return;
+    this.render(this.mode);
+  };
+
+  render = (mode) => {
     switch (mode) {
-      //case home: home.render()
       case 'HOME':
-        this.target.innerHTML = 'test done';
+        this.home.render();
+        break;
+      case 'MEMO_APP':
+        this.memoApp.render();
+        break;
+      case 'ALARM_APP':
+        this.alarmApp.render();
+        break;
+      case 'PHOTO_APP':
+        this.photoApp.render();
+        break;
+      default:
+        throw new Error('error!');
     }
-  }
+  };
 }
 
 export default App;
