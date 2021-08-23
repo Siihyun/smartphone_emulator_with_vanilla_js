@@ -1,0 +1,32 @@
+.invisible {
+  display: none;
+}
+
+.alarm-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.alarm-set-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.alarm-nav-bar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.alarm-list {
+  width: 100%;
+  margin-top: 5rem;
+}
+
+.alarm-item {
+}

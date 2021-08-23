@@ -1,11 +1,11 @@
 import './styles.css';
-import { getFormatedTime } from './src/utils/getCurrentTime';
+import { getFormatedTime, getFormatedYear } from './src/utils/getCurrentTime';
 import App from './src/modules/app';
 
 const setTimeBar = () => {
   const timeBar = document.querySelector('.time-bar');
   setInterval(() => {
-    timeBar.textContent = getFormatedTime();
+    timeBar.textContent = getFormatedYear() + ' ' + getFormatedTime();
   }, 1000);
 };
 

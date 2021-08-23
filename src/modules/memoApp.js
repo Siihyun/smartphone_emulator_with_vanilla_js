@@ -19,21 +19,23 @@ class MemoApp {
     </nav>
     <input class="memo-input invisible" type="text" placeholder="메모를 입력하세요..">
     <ul class="memo-list">
-      <li class="memo-item">sample memo</li>
-      <li class="memo-item">sample memo</li>
-      <li class="memo-item">sample memo</li>
     </ul>
   </section>`;
 
     const memoWrapper = document.querySelector('.memo-wrapper');
     const navbar = document.querySelector('.nav-bar');
     const input = document.querySelector('.memo-input');
-    navbar.addEventListener('click', (e) => {
-      if (e.target.classList.contains('back-button')) {
+    memoWrapper.addEventListener('click', (e) => {
+      const targetClassList = e.target.classList;
+      if (targetClassList.contains('back-button')) {
         this.setState('HOME');
-      } else if (e.target.classList.contains('new-button')) {
+      } else if (targetClassList.contains('new-button')) {
         input.classList.remove('invisible');
         input.focus();
+      } else if (targetClassList.contains('memo-item')) {
+        const memoList = document.querySelectorAll('.memo-item');
+        memoList.forEach((item) => item.classList.remove('full-load'));
+        targetClassList.add('full-load');
       }
     });
 
