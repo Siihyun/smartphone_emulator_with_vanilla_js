@@ -18,9 +18,13 @@ Vanilla Javascript를 이용한 SPA로 구현하였습니다.
 entry는 index.js 파일이고, 전반적인 폴더 구조는 다음과 같습니다.
 
 modules - 컴포넌트를 담은 폴더입니다. app component는 4개의 컴포넌트를 느슨하게 결합하며, 제어합니다. 나머지 4개의 파일은 각각의 view를 담당합니다.
+
 styles - 각각의 모듈이 사용하는 css 파일이 위치합니다.
+
 images - 프로젝트에 사용한 정적 파일들이 담겨있습니다.
+
 utils - 각 모듈에서 공동으로 사용되는 함수들이 위치합니다.
+
 dist - webpack의 output path로, build된 파일이 위치합니다.
 
 <br>
