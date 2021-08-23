@@ -39,7 +39,7 @@ class App {
         this.photoApp.render();
         break;
       default:
-        throw new Error('error!');
+        return;
     }
   };
 }
