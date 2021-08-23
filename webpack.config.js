@@ -23,6 +23,9 @@ module.exports = {
   ],
   devServer: {
     historyApiFallback: true,
+    static: {
+      directory: resolve(__dirname, './dist'),
+    },
   },
   module: {
     rules: [
@@ -37,7 +40,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'images/',
+              outputPath: './dist',
             },
           },
         ],

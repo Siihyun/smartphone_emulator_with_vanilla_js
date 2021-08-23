@@ -1,0 +1,20 @@
+.photo-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50rem;
+  height: 8rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin: 0 auto;
+  background-color: #f8f9fa;
+}
+
+.photo-item {
+  width: 4rem;
+  height: 4rem;
+}
+
+.photo-image {
+  width: 100%;
+}
