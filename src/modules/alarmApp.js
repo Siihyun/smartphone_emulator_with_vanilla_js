@@ -128,6 +128,8 @@ class AlarmApp {
       } else if (targetClassList.contains('alarm-delete')) {
         const alarmTime = e.target.dataset.time;
         this.deleteAlarm(alarmTime);
+      } else if (targetClassList.contains('alarm-back-button')) {
+        this.setState('HOME');
       }
     });
   };
