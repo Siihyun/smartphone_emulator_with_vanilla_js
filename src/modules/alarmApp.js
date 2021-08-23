@@ -28,21 +28,19 @@ class AlarmApp {
 
     const alarmTime =
       this.addZero(selectedHour) + ':' + this.addZero(selectedMin);
-    console.log('alarmTime:' + alarmTime);
+
     return alarmTime;
   };
 
   setAlarm = (alarmTime) => {
     const alarm = setInterval(() => {
-      console.log(alarmTime, getFormatedTime());
+      //console.log(alarmTime, getFormatedTime());
       if (alarmTime === getFormatedTime()) {
-        console.log(alarmTime, getFormatedTime());
         alert(getFormatedTime());
         this.deleteAlarm(alarmTime);
       }
     }, 1000);
     this.alarmIntervalList.push({ time: alarmTime, interval: alarm });
-    console.log(this.alarmIntervalList);
   };
 
   deleteAlarm = (alarmTime) => {
