@@ -17,7 +17,7 @@ class MemoApp {
       <button class="back-button">back</button>
       <button class="new-button">new</button>
     </nav>
-    <input class="memo-input invisible" type="text">
+    <input class="memo-input invisible" type="text" placeholder="메모를 입력하세요..">
     <ul class="memo-list">
       <li class="memo-item">sample memo</li>
       <li class="memo-item">sample memo</li>
@@ -51,7 +51,7 @@ class MemoApp {
   update = () => {
     const target = document.querySelector('.memo-list');
     target.innerHTML = this.memoList
-      .map((memoContent) => `<li class="memo-item">${memoContent}</li>`)
+      .map((memoContent) => `<li class="memo-item">${memoContent}</li><hr>`)
       .join('');
   };
 }
