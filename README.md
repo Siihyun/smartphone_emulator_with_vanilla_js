@@ -34,6 +34,8 @@ dist - webpack의 output path로, build된 파일이 위치합니다.
 
 ## 🔖 2. Build & Start
 
+npm start후, http://localhost:8080/ 에 접속하면 실행해 보실 수 있습니다.
+
 ### install
 
 ```
